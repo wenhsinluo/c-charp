@@ -91,7 +91,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "某某生命靈數";
             this.ResumeLayout(false);
             this.PerformLayout();
 

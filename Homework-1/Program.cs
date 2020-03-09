@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,33 +11,43 @@ namespace Homework_1
     {
         static void Main(string[] args)//輸入數字判斷奇偶數
         {
-            while (true) //方便重複使用
+            string TickNumber = string.Empty;
+            DateTime FlyingDay, Birthday;
+            List<string> list = new List<string>();
+            List<string> result = new List<string>();
+            var lines = File.ReadAllLines("test03.TXT");
+            var res = lines.ToList().Where(x => x.StartsWith("695") || x.StartsWith("525"));
+            foreach (var item in res)
             {
-                int value;
-                int Remaining;
-
-                Console.WriteLine("請輸入判斷數字");
-                string input = Console.ReadLine();
-                value = int.Parse(input);         //輸入的字串轉換int型別
-                Remaining = value % 2;            //轉換後取商數
-
-
-                if (Remaining == 0)//商數等於0代表偶數
+                if (DateTime.TryParseExact(item.Substring(13, 8), "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime r1) &&
+                    DateTime.TryParseExact(item.Substring(21, 8), "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime r2) ||
+                    int.Parse(item.Substring(13, 8)) == 99999999) //符合日期格式
                 {
-                    Console.WriteLine("你輸入的是偶數" + "\r\n");
-                }
-                else//不是就表示是奇數
-                {
-                    Console.WriteLine("你輸入的是奇數" + "\r\n");
+                    result.Add(item);
                 }
             }
-
-
-
-
-
-
+            foreach (var item in result)
+            {
+                TickNumber = item.Substring(0, 13);
+                Console.WriteLine($"TickNumber: {TickNumber}");
+            }
+            foreach (var item in result)
+            {
+                DateTime.TryParseExact(item.Substring(13, 8), "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out FlyingDay);
+                if (item.Substring(13, 8) == "99999999")
+                {
+                    FlyingDay = DateTime.MaxValue;
+                }
+                Console.WriteLine($"FlyingDay: {FlyingDay}");
+            }
+            foreach (var item in result)
+            {
+                DateTime.TryParseExact(item.Substring(21, 8), "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out Birthday);
+                Console.WriteLine($"Birthday: {Birthday}");
+            }
+            Console.ReadLine();
         }
-
     }
+
+    
 }

@@ -21,7 +21,6 @@ namespace Hackathon_6
                 if (input > 540000 && input <= 1210000)
                 {
                     input = input * 0.12m;
-
                     input -= 37800;
                 }
                 if (input > 1210000 && input <= 2420000)

@@ -10,13 +10,12 @@ namespace Hackathon_1
     {
         static void Main(string[] args)
         {
-            string number;
-            for(int i = 0;i <= 100; i++)
+            for (int x = 0; x <= 100; x++)
             {
-                number = i.ToString().Replace("0", "D").Replace("3", "A").Replace("5", "B").Replace("9", "C");
-                Console.WriteLine(number);
+                Console.WriteLine(x.ToString().Replace("3", "A").Replace("5", "B").Replace("9", "C").Replace("0", "D"));
             }
             Console.ReadLine();
         }
     }
+
 }

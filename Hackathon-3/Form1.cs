@@ -58,8 +58,10 @@ namespace Hackathon_3
 
         private void button3_Click(object sender, EventArgs e)//檢查答案
         {
-            if (textBox1.Text != "")
+            label3.Text = "請輸入4位數字!";
+            if (textBox1.Text != "" && textBox1.Text.Count() == 4)
             {
+                label3.Text = "";
                 k = 0;
                 A = 0;
                 y = "";
@@ -69,29 +71,30 @@ namespace Hackathon_3
                     y += u;
                     k++;
                 }
-
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                if (random[i] == play[i])
+                for (int i = 0; i < 4; i++)
                 {
-                    A++;
+                    if (random[i] == play[i])
+                    {
+                        A++;
+                    }
                 }
-            }
-            var ailist = new List<int> { random[0], random[1], random[2], random[3] };
-            var playlist = new List<int> { play[0], play[1], play[2], play[3] };
-            var intersection = ailist.Intersect(playlist);
-            var B = intersection.Count();
-            B -= A;
-            textBox2.Text += textBox1.Text + "---" + A + "A" + B + "B" + "\r\n";
-            if (A == 4)
-            {
-                MessageBox.Show("恭喜過關!請重新開始!");
+                var ailist = new List<int> { random[0], random[1], random[2], random[3] };
+                var playlist = new List<int> { play[0], play[1], play[2], play[3] };
+                var intersection = ailist.Intersect(playlist);
+                var B = intersection.Count();
+                B -= A;
+                textBox2.Text += textBox1.Text + "---" + A + "A" + B + "B" + "\r\n";
+                if (A == 4)
+                {
+                    MessageBox.Show("恭喜過關!請重新開始!");
+                }
+
             }
         }
 
         private void button4_Click(object sender, EventArgs e)//放棄重來
         {
+            textBox1.Text = "";
             button1.Enabled = true;
             button2.Enabled = false;
             button3.Enabled = false;

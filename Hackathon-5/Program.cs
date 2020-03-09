@@ -12,11 +12,10 @@ namespace Hackathon_5
         {
             int a = 101;//初始值
             int b = 200;//上限值
-            int c = 100;//幾個質數
+            int c = 100;//幾個數字
 
             for (int i = a; i <= b; i++)
             {
-                
                 for (int x = 2; x < i; x++)
                 {
                     if(i == x+1)
